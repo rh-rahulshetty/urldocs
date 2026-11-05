@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo — The Web Platform</title>
+<style>
+  body { font: 16px/1.65 Georgia, "Times New Roman", serif; max-width: 720px; margin: 0 auto; padding: 32px 24px 80px; color: #222; }
+  h1 { font-size: 30px; margin-bottom: 4px; }
+  h2 { font-size: 22px; margin-top: 36px; border-bottom: 1px solid #ddd; padding-bottom: 4px; }
+  .meta { color: #888; font-size: 13px; margin-bottom: 24px; }
+  blockquote { margin: 20px 0; padding: 8px 18px; border-left: 3px solid #ccc; color: #555; font-style: italic; }
+  ul { padding-left: 24px; }
+  a { color: #1a4b8c; }
+  code { background: #f4f4f4; padding: 1px 5px; border-radius: 3px; font-size: 14px; }
+</style>
+</head>
+<body>
+<h1>The Web Platform</h1>
+<p class="meta">Demo page for UrlDocs &middot; try selecting some text and adding a note</p>
+
+<p>This small demo page stands in for any website you might want to annotate.
+Select any passage below — a sentence, a phrase, even a single word — and UrlDocs
+will show a floating <strong>Note</strong> button. Pick a color, type your note, and save.
+Click <em>Share link</em> in the top bar to copy a URL that reproduces every highlight
+and note, without any server storage.</p>
+
+<h2>How sharing works</h2>
+<p>Every annotation is stored as a set of <em>anchors</em>: the position of the selected
+text inside the page's HTML structure, plus your note text and chosen color. All of that
+is compressed and placed in the URL fragment (the part after <code>#</code>).</p>
+<blockquote>A URL fragment is never sent to the server, which means UrlDocs can ship
+as a purely static website — no database, no accounts, no backend.</blockquote>
+<p>When someone opens your shared link, the app loads the original page and re-applies
+your annotations on top of it.</p>
+
+<h2>How anchors stay stable</h2>
+<p>An anchor points to a specific text node in the page: which element it lives in
+(a path from the page root) and where inside that element's text it begins and ends.
+Because the anchor describes <em>where the text is</em> rather than copying the text
+itself, a highlight keeps working even when the page re-renders around it.</p>
+<ul>
+  <li><strong>Yellow</strong> — the default highlight color.</li>
+  <li><strong>Green</strong> — for confirmations and things that work.</li>
+  <li><strong>Blue</strong> — for questions and things to double-check.</li>
+</ul>
+
+<h2>Limitations</h2>
+<p>Remote pages are fetched through public CORS proxies, so some sites (ones that block
+proxy traffic, or that rely heavily on JavaScript) may not load, or may load without
+their scripts. If the underlying page's HTML changes after you share a link, individual
+highlights may drop — UrlDocs keeps the ones that still fit.</p>
+
+<h2>Try it</h2>
+<p>Highlight this final paragraph, add a note, then share the link and open it in a
+fresh window: your highlights and notes should reappear exactly where you left them.</p>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UrlDocs — annotate any web page</title>
+<link rel="stylesheet" href="style.css">
+<script src="lz-string.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">Url<span>Docs</span></div>
+  <form id="loadForm" class="urlform" autocomplete="off">
+    <input id="urlInput" type="text" placeholder="Paste a URL, e.g. https://en.wikipedia.org/wiki/Web" spellcheck="false">
+    <button type="submit" id="loadBtn">Load</button>
+    <button type="button" id="demoBtn" class="ghost">Demo</button>
+  </form>
+  <button id="shareBtn" class="ghost" disabled>Share link</button>
+</header>
+<div id="status" class="status"></div>
+<main class="layout">
+  <section class="frameWrap" id="frameWrap">
+    <iframe id="page" title="Loaded page"></iframe>
+    <div id="empty" class="empty">
+      <h1>Annotate any web page</h1>
+      <p>Paste a URL above. Then select text on the page to add a colored highlight
+         and a note. Share one link and anyone opening it sees your annotations.</p>
+      <button id="demoBtn2">Try the demo page</button>
+    </div>
+    <div id="floatBtn" class="floatBtn hidden">＋ Add note</div>
+    <div id="noteCard" class="noteCard hidden">
+      <div class="swatches" id="swatches">
+        <button type="button" class="sw yellow sel" data-c="yellow" title="Yellow"></button>
+        <button type="button" class="sw green" data-c="green" title="Green"></button>
+        <button type="button" class="sw blue" data-c="blue" title="Blue"></button>
+      </div>
+      <textarea id="noteText" rows="3" placeholder="Your note…"></textarea>
+      <div class="cardActions">
+        <button type="button" id="noteCancel" class="ghost">Cancel</button>
+        <button type="button" id="noteSave">Add note</button>
+      </div>
+    </div>
+  </section>
+  <aside class="sidebar">
+    <div class="sideHead">
+      <h2>Notes</h2>
+      <span id="noteCount" class="count">0</span>
+      <button type="button" id="clearBtn" class="ghost sm" hidden>Clear</button>
+    </div>
+    <ol id="noteList"></ol>
+    <p id="noNotes" class="muted">Notes you add appear here.</p>
+  </aside>
+</main>
+<div id="toast" class="toast hidden"></div>
+<script src="app.js"></script>
+</body>
+</html>
